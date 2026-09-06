@@ -15,3 +15,11 @@ INSERT INTO cash_registers (branch_id, name, status) VALUES
 (1, 'Alex Cash 2', 'Active'),
 (2, 'Cairo Main Cash', 'Active'),
 (3, 'Giza Main Cash', 'Active');
+
+ALTER TABLE cash_registers
+    DROP CONSTRAINT FK_cash_registers_branches,
+    ADD CONSTRAINT FK_cash_registers_branches
+        FOREIGN KEY (branch_id)
+        REFERENCES branches(branch_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE;
